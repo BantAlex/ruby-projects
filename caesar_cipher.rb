@@ -1,3 +1,4 @@
+require 'pry'
 def caesar_cipher (str,shift)
   encrypted_str = []
   str_array = str.split("")
