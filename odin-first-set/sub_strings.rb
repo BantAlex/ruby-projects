@@ -1,26 +1,27 @@
-# require 'pry'
 def substrings (str,dict)
-  counter = 0
   result = {}
-  # split_str = str.split(" ")
-  # binding.pry
-  if dict.include?(split_str)
-    counter += 1
-    result[str] = counter
+  regex = [".",",","!","?"]
+  split_str = str.split(" ")
+
+  dict.each do |word|
+    word = word.downcase
+    split_str.each do |str_word,counter|
+      str_word = str_word.downcase
+      counter = 0
+      if str_word == word
+        counter += 1
+        result[word] = counter
+      end
+    end
   end
-  result
+ p result
 end
 
-
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
-substrings("below", dictionary)
+substrings("Howdy partner, sit down! How's it going?", dictionary)
 
-
-
-#*Accept one word at first(str)
-#*Define a counter
-#*Define a result hash
-#*Compare it with dict
-#*if dict includes str counter++
-#*Push the word as the key and counter as the value in the result hash
-#*Return the hash
+#!Multiple word feature:
+  #*Split the str into words
+  #*Make regex for commas and such(?)
+  #*Compare with dict
+  #*Push into result with counter as value of str's key
